@@ -2,6 +2,7 @@
   <div id="app">
     app
     <button @click="login">请求</button>
+    <div class="testd"></div>
   </div>
 </template>
 
@@ -23,4 +24,9 @@ export default {
 </script>
 
 <style>
+.testd {
+  width: 5.9375rem;
+  height: .2865rem;
+  background-color: #000;
+}
 </style>
