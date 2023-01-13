@@ -26,12 +26,12 @@ const routes = [
       },
       {
         path: '/user/login',
-        name: 'login',
+        name: 'Login',
         component: () => import('../views/login.vue'),
       },
       {
         path: '/user/register',
-        name: 'register',
+        name: 'Register',
         component: () => import('../views/register.vue'),
       },
     ],
@@ -41,12 +41,22 @@ const routes = [
     name: 'Account',
     component: () => import('../views/Account.vue'),
   },
+  {
+    path: '/admin',
+    name: 'Admin',
+    component: () => import('../views/Admin.vue'),
+  },
 ];
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes,
+});
+
+router.beforeEach((to, from, next) => {
+  if (to.name !== 'Login' && to.name !== 'Register' && !window.sessionStorage.getItem('token')) next({ name: 'Login' });
+  else next();
 });
 
 export default router;

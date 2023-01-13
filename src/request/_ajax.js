@@ -5,4 +5,11 @@ const instance = axios.create({
   timeout: 6000,
 });
 
+instance.interceptors.request.use((config) => {
+  /* eslint-disable no-param-reassign */
+  config.headers.Authorization = window.sessionStorage.getItem('token');
+  console.log('config', config);
+  return config;
+});
+
 export default instance;

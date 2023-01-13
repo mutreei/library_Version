@@ -15,6 +15,8 @@
 </template>
 
 <script>
+import getData from '../request/_ajax';
+
 export default {
   data() {
     return {
@@ -25,8 +27,29 @@ export default {
     };
   },
   methods: {
-    login() {
-      console.log(this.userMsg);
+    // 登录
+    async login() {
+      // console.log(this.userMsg);
+      const { data: res } = await getData.post('/login', {
+        username: this.userMsg.username,
+        password: this.userMsg.password,
+      });
+      if (!res.token) {
+        this.$alert('<p style="color: red; font-size: 15px;">登录失败，请检查登录信息</p>', '出现错误了', {
+          dangerouslyUseHTMLString: true,
+        });
+        console.log(res);
+      } else if (res.rights === 'administer') {
+      // 成功登录后判断权限 用户基本数据存储到vuex内，用户token信息存到sessionStorage中
+        console.log(res.rights);
+        window.sessionStorage.setItem('token', res.token);
+        this.$router.push('/admin');
+      } else if (res.rights === 'reader') {
+        console.log(res);
+        window.sessionStorage.setItem('token', res.token);
+        this.$store.commit('addUserMsg', res);
+        this.$router.push('/');
+      }
     },
     reset() {
       this.userMsg.password = '';

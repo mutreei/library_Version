@@ -23,6 +23,8 @@
 </template>
 
 <script>
+import getData from '../request/_ajax';
+
 export default {
   data() {
     return {
@@ -35,7 +37,7 @@ export default {
     };
   },
   methods: {
-    register() {
+    async register() {
       // 注册的时候对输入框进行验证
       if (this.userMsg.password === '' || this.userMsg.checkPassword === '' || this.userMsg.rights === '' || this.userMsg.username === '') {
         document.querySelector('.verifyPwd').textContent = '请填写完整信息';
@@ -44,6 +46,22 @@ export default {
       } else {
         document.querySelector('.verifyPwd').textContent = '';
         console.log(this.userMsg);
+        // 注册
+        const { data: res } = await getData.post('/register', {
+          username: this.userMsg.username,
+          password: this.userMsg.password,
+          rights: this.userMsg.rights,
+        });
+        if (res.statusCode) {
+          this.$alert('<p style="color: red; font-size: 15px;">用户名已被使用</p>', '出现错误了', {
+            dangerouslyUseHTMLString: true,
+          });
+        } else {
+          this.$message({
+            message: '恭喜您注册成功',
+            type: 'success',
+          });
+        }
       }
     },
     reset() {

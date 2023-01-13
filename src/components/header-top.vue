@@ -4,9 +4,11 @@
     <div class="content">
         <div class="left-content">欢迎来到网上图书商城</div>
         <div class="right-content">
-            <span class="login" @click="login">登录</span>
-            <span class="register" @click="register">注册</span>
-            <span class="account" @click="myAcount">我的账户</span>
+            <span class="user" v-if="$store.state.userMsg.token">{{ $store.state.userMsg.username}}</span>
+            <span class="login" @click="login" v-else>登录</span>
+            <span class="logout" @click="logout" v-if="$store.state.userMsg.token">退出</span>
+            <span class="register" @click="register" v-else>注册</span>
+            <span class="account" @click="showAcount">我的账户</span>
         </div>
     </div>
 </div>
@@ -28,6 +30,15 @@ export default {
       this.$router.push('/user/register');
     },
     myAcount() {
+      this.$router.push('/account');
+    },
+    logout() {
+      // 清除vuex.state.userMsg 重定向到登录界面, 清除session Storage
+      this.$store.commit('removeUserMsg');
+      this.$router.push('/user/login');
+      window.sessionStorage.removeItem('token');
+    },
+    showAcount() {
       this.$router.push('/account');
     },
   },

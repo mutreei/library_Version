@@ -20,6 +20,8 @@ export default {
 
     };
   },
+  methods: {
+  },
   components: {
     headerTop,
     topBar,
