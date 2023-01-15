@@ -9,6 +9,8 @@ import {
   Radio,
   MessageBox,
   Message,
+  Table,
+  TableColumn,
 } from 'element-ui';
 
 import Vue from 'vue';
@@ -21,6 +23,8 @@ Vue.use(FormItem);
 Vue.use(Menu);
 Vue.use(MenuItem);
 Vue.use(Radio);
+Vue.use(Table);
+Vue.use(TableColumn);
 
 Vue.prototype.$alert = MessageBox.alert;
 Vue.prototype.$message = Message;

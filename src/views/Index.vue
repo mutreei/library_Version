@@ -6,6 +6,7 @@
           <topBar/>
         </div>
         <slidersShow/>
+        <goods/>
     </div>
 </template>
 
@@ -13,6 +14,7 @@
 import headerTop from '../components/header-top.vue';
 import topBar from '../components/top-bar.vue';
 import slidersShow from '../components/sliders-show.vue';
+import goods from '../components/goods.vue';
 
 export default {
   data() {
@@ -26,6 +28,7 @@ export default {
     headerTop,
     topBar,
     slidersShow,
+    goods,
   },
 };
 </script>
@@ -34,7 +37,7 @@ export default {
 /* @import url(); 引入css类 */
 .all {
   width: 100%;
-  height: 100%;
+  height: auto;
 }
 .top {
   position: relative;

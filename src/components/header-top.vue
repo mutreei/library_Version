@@ -2,9 +2,11 @@
 <template>
 <div class="header-top">
     <div class="content">
-        <div class="left-content">欢迎来到网上图书商城</div>
+        <div class="left-content" @click="goIndex">欢迎来到网上图书商城</div>
         <div class="right-content">
-            <span class="user" v-if="$store.state.userMsg.token">{{ $store.state.userMsg.username}}</span>
+            <span class="user" v-if="$store.state.userMsg.token">
+              <img src="../assets/icon/bussiness-man.svg" alt="" style="width: .0938rem; vertical-align: middle;">
+              {{ $store.state.userMsg.username}}</span>
             <span class="login" @click="login" v-else>登录</span>
             <span class="logout" @click="logout" v-if="$store.state.userMsg.token">退出</span>
             <span class="register" @click="register" v-else>注册</span>
@@ -40,6 +42,9 @@ export default {
     },
     showAcount() {
       this.$router.push('/account');
+    },
+    goIndex() {
+      this.$router.push('');
     },
   },
 };

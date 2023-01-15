@@ -29,7 +29,7 @@ export default {
     margin: 0, auto;
     height: .599rem;
     width: 6.0938rem;
-    background-color: rgb(255, 229, 252);
+    background-color: #e2e2e2;
     text-align: center;
 }
 h1 {

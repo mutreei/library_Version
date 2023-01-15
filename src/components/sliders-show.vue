@@ -2,9 +2,18 @@
 <template>
     <div class="swiper-container">
         <div class="swiper-wrapper">
-            <div class="swiper-slide">Slide 1</div>
-            <div class="swiper-slide">Slide 2</div>
-            <div class="swiper-slide">Slide 3</div>
+            <div class="swiper-slide">
+              <img src="http://localhost:3001/public/images/三国演义.jpeg" alt="" class="bookCover">
+              <p class="tit">三国演义</p>
+            </div>
+            <div class="swiper-slide">
+              <img src="http://localhost:3001/public/images/西游记.jpeg" alt="" class="bookCover">
+              <p class="tit">西游记</p>
+            </div>
+            <div class="swiper-slide">
+              <img src="http://localhost:3001/public/images/水浒传.jpeg" alt="" class="bookCover">
+              <p class="tit">水浒传</p>
+            </div>
         </div>
         <!-- 如果需要分页器 -->
         <div class="swiper-pagination"></div>
@@ -18,12 +27,19 @@
 <script>
 import Swiper from 'swiper';
 import 'swiper/css/swiper.min.css';
-// import { EffectFade, Controller } from 'swiper';
 
 export default {
+  async created() {
+    this.$store.dispatch('saveBooks')
+      .then((books) => {
+        console.log(books);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  },
   data() {
     return {
-
     };
   },
   mounted() {
@@ -51,5 +67,20 @@ export default {
 .swiper-container {
     width:100%;
     height: 3.099rem;
+}
+.bookCover {
+  height: 100%;
+  margin-left: 1.0417rem;
+}
+.swiper-slide {
+  position:relative;
+}
+.tit {
+  display: inline-block;
+  position:absolute;
+  top: 50%;
+  right: 1.0417rem;
+  font-size: 40px;
+  margin-bottom: 200px;
 }
 </style>
