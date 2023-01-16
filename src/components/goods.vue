@@ -10,8 +10,8 @@
                 <br>
                 <span>购买：&nbsp;￥{{ item.price }}</span>
             </p>
-            <el-button>租借</el-button>
-            <el-button>购买</el-button>
+            <el-button @click="borrow(item.bookid)">租借</el-button>
+            <el-button @click="buy(item.bookid)">购买</el-button>
             <!-- {{ item }} -->
         </div>
     </div>
@@ -19,12 +19,22 @@
 </template>
 
 <script>
-// import singleGoods from './single-goods.vue';
+import getData from '../request/_ajax';
 
 export default {
   data() {
     return {
     };
+  },
+  methods: {
+    async borrow(bookid) {
+      console.log(bookid);
+      const { data: res } = await getData.post('/borrowBook', { bookID: bookid });
+      console.log(res);
+    },
+    buy(bookid) {
+      console.log(bookid);
+    },
   },
   components: {
     // singleGoods,

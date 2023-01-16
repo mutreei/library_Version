@@ -6,7 +6,7 @@
     <div class="feat">
       <div class="balance">
         <p>账户余额:<span>{{ balance }}</span></p>
-        <el-button>充值</el-button>
+        <el-button @click="recharge">充值</el-button>
       </div>
       <el-table :data="tableData" style="width: 100%">
         <el-table-column prop="userName" label="用户名" width="180"></el-table-column>
@@ -50,6 +50,27 @@ export default {
     goIndex() {
       this.$router.push('/');
     },
+    recharge() {
+      this.$prompt('请输入充值金额', '提示', {
+        confirmButtonText: '充值',
+        cancelButtonClass: '取消',
+      })
+        .then(async ({ value }) => {
+        // 充值操作
+          const { data } = await getData.post('/recharge', { rechargeAmount: parseInt(value, 0) });
+          console.log(data);
+          this.$message({
+            type: 'success',
+            message: `已成功充值${value}元`,
+          });
+        })
+        .catch(() => {
+          this.$message({
+            type: 'info',
+            message: '取消充值',
+          });
+        });
+    },
   },
   components: {
     headerTop,
@@ -62,8 +83,8 @@ export default {
   text-align: center;
 }
 .account h2 {
-  margin: 20px auto;
-  font-size: 30px;
+  margin: .1042rem auto;
+  font-size: .1563rem;
 }
 .account h2 span {
   cursor: pointer;
@@ -72,26 +93,26 @@ export default {
   color: #e92263;
 }
 .feat {
-  width: 5.9375rem;
+  width: 1140px;
   height: 100%;
   margin: 0 auto;
 }
 
 .feat .balance {
   width: 100%;
-  height: .2344rem;
+  height: 45.0048px;
 }
 .feat .balance p{
   float: left;
-  margin-left: 20px;
-  font-size: .0938rem;
-  line-height: .2344rem;
+  margin-left: .1042rem;
+  font-size: 18.0096px;
+  line-height: 45.0048px;
 }
 .feat .balance p span {
   color: #e92263;
 }
 .feat .balance .el-button {
   float: right;
-  margin: 2px 20px;
+  margin: .0104rem .1042rem;
 }
 </style>

@@ -28,3 +28,4 @@ Vue.use(TableColumn);
 
 Vue.prototype.$alert = MessageBox.alert;
 Vue.prototype.$message = Message;
+Vue.prototype.$prompt = MessageBox.prompt;
