@@ -3,7 +3,9 @@
     <div class="all">
         <headerTop/>
         <div class="top">
-          <topBar/>
+          <topBar>
+            <h1>碧野图书馆</h1>
+          </topBar>
         </div>
         <slidersShow/>
         <goods/>

@@ -27,7 +27,7 @@ export default {
     const { data: res } = await getData.post('/getSelfAssets');
     this.balance = res.balance;
     const r = await getData.post('/getSelfRecharge');
-    this.tableData = r.data;
+    this.tableData = r.data.reverse();
     this.tableData.map((value) => {
       /* eslint-disable no-param-reassign */
       if (value.amount > 0) {

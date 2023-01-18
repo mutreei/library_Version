@@ -46,6 +46,11 @@ const routes = [
     name: 'Admin',
     component: () => import('../views/Admin.vue'),
   },
+  {
+    path: '/search',
+    name: 'Search',
+    component: () => import('../views/SearchRes.vue'),
+  },
 ];
 
 const router = new VueRouter({
