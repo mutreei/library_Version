@@ -35,11 +35,6 @@ export default {
 };
 </script>
 <style scoped>
-/* @import url(); 引入css类 */
-/* .searchRes {
-    position:relative;
-    margin-bottom: .1302rem;
-} */
 .topBar {
     margin-left: 1.9063rem;
 }
