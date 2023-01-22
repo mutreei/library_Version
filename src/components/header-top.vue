@@ -4,7 +4,7 @@
     <div class="content">
         <div class="left-content" @click="goIndex">欢迎来到网上图书商城</div>
         <div class="right-content">
-            <span class="user" v-if="$store.state.userMsg.token">
+            <span class="user" v-if="$store.state.userMsg.token" @click="toSpace">
               <img src="../assets/icon/bussiness-man.svg" alt="" style="width: .0938rem; vertical-align: middle;">
               {{ $store.state.userMsg.username}}</span>
             <span class="login" @click="login" v-else>登录</span>
@@ -45,6 +45,9 @@ export default {
     },
     goIndex() {
       this.$router.push('');
+    },
+    toSpace() {
+      this.$router.push('/space');
     },
   },
 };

@@ -45,11 +45,38 @@ const routes = [
     path: '/admin',
     name: 'Admin',
     component: () => import('../views/Admin.vue'),
+    children: [
+      {
+        path: '/admin/user',
+        name: 'AdminUser',
+        component: () => import('../components/admin-user.vue'),
+      },
+      {
+        path: '/admin/assets',
+        name: 'AdminAssets',
+        component: () => import('../components/admin-assets.vue'),
+      },
+      {
+        path: '/admin/notice',
+        name: 'AdminNotice',
+        component: () => import('../components/admin-notice.vue'),
+      },
+      {
+        path: '/admin/book',
+        name: 'AdminBook',
+        component: () => import('../components/admin-book.vue'),
+      },
+    ],
   },
   {
     path: '/search',
     name: 'Search',
     component: () => import('../views/SearchRes.vue'),
+  },
+  {
+    path: '/space',
+    name: 'Space',
+    component: () => import('../views/SelfSpace.vue'),
   },
 ];
 

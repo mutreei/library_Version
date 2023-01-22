@@ -1,24 +1,20 @@
-<!-- 商品详情 -->
+<!-- 公告管理 -->
 <template>
 <div>
-    <SB :books="this.$store.state.books"/>
+    公告管理
 </div>
 </template>
 
 <script>
-
-import singleBook from './single-book.vue';
-
 export default {
-  components: {
-    SB: singleBook,
-  },
   data() {
     return {
+
     };
   },
 };
 </script>
 <style scoped>
 /* @import url(); 引入css类 */
+
 </style>

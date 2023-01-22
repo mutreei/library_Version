@@ -3,7 +3,7 @@
 <div class="topBar">
     <slot></slot>
     <div class="search">
-      <input type="text" placeholder="请输入关键字搜索书籍" v-model="keyword">
+      <input type="text" placeholder="请输入关键字搜索书籍" v-model="keyword" @keydown.enter="search">
       <button @click="search">
         <img src="../assets/icon/search.svg" alt="">
       </button>
