@@ -16,7 +16,8 @@ import {
   Col,
   Submenu,
   MenuItemGroup,
-
+  Dialog,
+  Pagination,
 } from 'element-ui';
 
 import Vue from 'vue';
@@ -36,6 +37,8 @@ Vue.use(Select);
 Vue.use(Col);
 Vue.use(Submenu);
 Vue.use(MenuItemGroup);
+Vue.use(Dialog);
+Vue.use(Pagination);
 
 Vue.prototype.$alert = MessageBox.alert;
 Vue.prototype.$message = Message;

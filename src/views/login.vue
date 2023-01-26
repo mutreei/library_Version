@@ -43,6 +43,7 @@ export default {
       // 成功登录后判断权限 用户基本数据存储到vuex内，用户token信息存到sessionStorage中
         console.log(res.rights);
         window.sessionStorage.setItem('token', res.token);
+        this.$store.commit('addUserMsg', res);
         this.$router.push('/admin');
       } else if (res.rights === 'reader') {
         console.log(res);
