@@ -3,6 +3,13 @@ import VueRouter from 'vue-router';
 
 Vue.use(VueRouter);
 
+// 获取原型对象上的push函数
+const originalPush = VueRouter.prototype.push;
+// 修改原型对象中的push方法
+VueRouter.prototype.push = function push(location) {
+  return originalPush.call(this, location).catch((err) => err);
+};
+
 const routes = [
   // {
   //   path: '/about',
@@ -66,6 +73,11 @@ const routes = [
         name: 'AdminBook',
         component: () => import('../components/admin-book.vue'),
       },
+      {
+        path: '/admin/book/addBook',
+        name: 'AddBook',
+        component: () => import('../components/addBook.vue'),
+      },
     ],
   },
   {
@@ -83,6 +95,7 @@ const routes = [
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
+  linkActiveClass: 'is-active',
   routes,
 });
 

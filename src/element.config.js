@@ -18,6 +18,12 @@ import {
   MenuItemGroup,
   Dialog,
   Pagination,
+  Descriptions,
+  DescriptionsItem,
+  Tag,
+  Breadcrumb,
+  BreadcrumbItem,
+  Upload,
 } from 'element-ui';
 
 import Vue from 'vue';
@@ -39,7 +45,14 @@ Vue.use(Submenu);
 Vue.use(MenuItemGroup);
 Vue.use(Dialog);
 Vue.use(Pagination);
+Vue.use(Descriptions);
+Vue.use(DescriptionsItem);
+Vue.use(Tag);
+Vue.use(Breadcrumb);
+Vue.use(BreadcrumbItem);
+Vue.use(Upload);
 
 Vue.prototype.$alert = MessageBox.alert;
 Vue.prototype.$message = Message;
 Vue.prototype.$prompt = MessageBox.prompt;
+Vue.prototype.$confirm = MessageBox.confirm;

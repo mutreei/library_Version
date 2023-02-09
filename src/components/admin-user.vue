@@ -120,16 +120,42 @@ export default {
   },
   methods: {
     // 需要重写接口
-
     async del(userID) {
-      console.log('userID', userID);
+      this.$confirm('此操作将永久删除该用户, 是否继续?', '警告', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning',
+      })
+        .then(async () => {
+          const res = await getData.post('/delUser', {
+            userID,
+          });
+          if (res.status === 200) {
+            this.$message.success('已成功删除该用户');
+            console.log('删除用户res', res);
+          } else {
+            this.$message.error('删除失败');
+          }
+        })
+        .catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消删除',
+          });
+        });
     },
     mod(userID) {
       console.log('userID', userID);
       this.dialogFormVisible = true;
       this.selectorID = userID;
     },
+    // 修改用户数据
     async ensure() {
+      const res = await getData.post('/modifyReader', {
+        ...this.form,
+        userID: this.selectorID,
+      });
+      console.log('修改用户信息res:', res);
       this.dialogFormVisible = false;
     },
   },

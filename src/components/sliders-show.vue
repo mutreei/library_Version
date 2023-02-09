@@ -62,7 +62,7 @@ export default {
   },
 };
 </script>
-<style scoped>
+<style scoped lang="less">
 /* @import url(); 引入css类 */
 .swiper-container {
     width:100%;
